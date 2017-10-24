@@ -1,0 +1,196 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Varela Round', sans-serif;
+    max-width: 1000px;
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header {
+    width: 100%;
+    margin: 2vh auto;
+    height: 20vh;
+    text-align: center;
+    background-color: #4eb69f;
+    color: #14362e;
+    font-size: 3.5vh;
+    font-weight: bold;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+header h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0;
+}
+
+header p {
+    margin: 0;
+    padding: 0;
+    font-size: 2.5vh;
+}
+
+section {
+    width: 100%;
+    height: 70vh;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+    background-color: #4eb69f;
+    color: #14362e;
+    font-size: 3vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#info {
+    display: flex;
+    justify-content: center;
+}
+
+#info div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 160px;
+    padding: 1.5vh;
+}
+
+#board {
+    box-sizing: border-box;
+    text-align: center;
+    padding: 2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label,
+.button {
+    font-family: 'Varela Round', sans-serif;
+    width: 80%;
+    min-height: 8vh;
+}
+
+.button {
+    background: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #14362e;
+    border-radius: 6px;
+    margin: 1.5vh;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+    transition: 0.2s;
+}
+
+.button:hover {
+    background: #4eb69f;
+}
+
+.button:active {
+    transform: translateY(4px);
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.75);
+}
+
+#word {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+#lifeData {
+    color: red;
+    font-size: 4vh;
+}
+
+footer {
+    display: flex;
+    width: 100%;
+    margin-top: 2vh;
+    height: 4vh;
+    background-color: #4eb69f;
+    color: #14362e;
+    font-size: 3vh;
+    align-content: center;
+    justify-content: center;
+}
+
+#people {
+    margin: 3vh;
+}
+
+#animation {
+    display: block;
+    width: 100%;
+}
+
+#category {
+    margin: 20px;
+}
+
+#categoryButtons {
+    display: flex;
+    align-items: center;
+}
+
+#categoryButtons .button {
+    width: 150px;
+}
+
+#endLifeEvent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    height: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10vh;
+    text-align: center;
+    font-size: 5vh;
+    line-height: 7vh;
+}
+
+#tryAgain {
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#tryAgain:hover {
+    color: white;
+}
+
+#tryAgain:active {
+    transform: translateY(4px);
+}
+
+img {
+    width: 7vh;
+    height: 7vh;
+    display: block;
+}
+
+#scoreData,
+#wrongData {
+    width: 7vh;
+}
+
+#endInfo {
+    display: flex;
+    height: 70px;
+    justify-content: justify;
+}
