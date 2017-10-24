@@ -154,7 +154,7 @@ function sprawdz(letter) {
 
 function endLifes() {
     loseWav.play();
-    $("section").html('<div id="endLifeEvent">Koniec żyć. :( <br>Twój wynik to: <span id="endInfo"><img src="goodImg.png"> &nbsp; ' + score + ' &nbsp; <img src="wrongImg.png"> &nbsp; ' + wrongAnswer + ' &nbsp; </span>Pozostało: ' + copyArray.length + '<br><span id="tryAgain" onclick="start()">Spróbuj ponownie</span></div>');
+    $("section").html('<div id="endLifeEvent">Koniec żyć :( <br>Twój wynik to: <span id="endInfo"><img src="goodImg.png"> &nbsp; ' + score + ' &nbsp; <img src="wrongImg.png"> &nbsp; ' + wrongAnswer + ' &nbsp; </span>Pozostało: ' + copyArray.length + '<br><span id="tryAgain" onclick="start()">Spróbuj ponownie</span></div>');
 
 }
 
