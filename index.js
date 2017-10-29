@@ -33,6 +33,7 @@ var config = {
 firebase.initializeApp(config);
 
 function load() {
+    showLoadingAnimation();
     return new Promise(resolve => {
         firebase.database().ref("ITWords/").on("child_added", function (data) {
             var newWord = data.val();
@@ -41,25 +42,26 @@ function load() {
         });;
     })
 }
-
 async function startFirst() {
     await load();
     startIT();
 }
 
 function loadFirstImage() {
-    $("#animation").html('<div id="people" style="background: white url(img1.png) no-repeat center bottom;  background-size: auto 90%; height: 250px;"></div>');
+    $("#animation").html('<div id="people" style="background: white url(img1.png) no-repeat center bottom;  background-size: auto 35vh; height: 40vh;"></div>');
     $("#people").fadeIn(1000);
     setTimeout("changeImg()", 1500);
 
 }
 
 function changeImg() {
-    $("#animation").html('<div id="people" style="background: white url(img2.png) no-repeat center bottom;  background-size: auto 90%; height: 250px;"></div>');
+    $("#animation").html('<div id="people" style="background: white url(img2.png) no-repeat center bottom;  background-size: auto 35vh; height: 40vh;"></div>');
     $("#people").fadeIn(1000);
 
 }
-
+function showLoadingAnimation(){
+    $("section").append(  '<div id="loadingAnimation"><div id="animation-background"></div><div id="loadingContainer"><div id="loading">Ładowanie<div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div></div></div>');
+}
 function startIT() {
     copyArray = arrayAllWords.slice(0);
     score = 0;
