@@ -1,4 +1,5 @@
 var arrayAllWords = [];
+var arrayWrongAnswer = [];
 var copyArray = [];
 var arrayAnswer = ["A", "B", "C", "D"];
 var goodAnswer = "";
@@ -17,7 +18,7 @@ var winWav = new Audio("win.wav");
 var loseWav = new Audio("lost.wav");
 var categoryName;
 var category;
-var numberChooseWords ;
+var numberChooseWords;
 document.getElementById("numbersOfWords").innerHTML = document.getElementById("myRange").value;
 
 function changeSlider() {
@@ -86,30 +87,29 @@ function showLoadingAnimation() {
 }
 
 function play() {
-    copyArray.length = 0;
-    do {
-        index = Math.round(Math.random() * (arrayAllWords.length - 1));
-        if (copyArray.includes(arrayAllWords[index]) == false) {
-            copyArray.push(arrayAllWords[index]);
-        }
-
-    } while (copyArray.length != numberChooseWords);
+    copyArray = arrayAllWords.slice(0);
+    arrayWrongAnswer.length=0;
     score = 0;
     wrongAnswer = 0;
     life = 3;
 
-
     $("section").html('<div id="info"><div style="text-align:center"><strong>Kategoria:<br>' + categoryName + '</strong></div><div id="life">Życia: <span id="lifeData"> &#10084; &#10084; &#10084;</span></div><div id="score"><img src="goodImg.png"><span id="scoreData"></span><img src="wrongImg.png"><span id="wrongData"></span></div><div id="remainedWords">Pozostało: <span id="remainedData"></span></div></div><div id="board"><label id="word"></label><div class="button" id="answerA" onclick="check(&#34;A&#34;)"></div><div class="button" id="answerB" onclick="check(&#34;B&#34;)"></div><div class="button" id="answerC" onclick="check(&#34;C&#34;)"></div><div class="button" id="answerD" onclick="check(&#34;D&#34;)"></div></div>');
     $("#scoreData").html(score);
     $("#wrongData").html(wrongAnswer);
-    $("#remainedData").html(copyArray.length);
+    $("#remainedData").html((numberChooseWords-score));
     randomWord();
 
 }
 
 function randomWord() {
-    index = Math.round(Math.random() * (copyArray.length - 1));
-    var chooseWord = copyArray[index];
+    
+    if (score+wrongAnswer>=numberChooseWords){
+         var chooseWord = arrayWrongAnswer[0];
+    }else{
+        index = Math.round(Math.random() * (copyArray.length - 1));
+         var chooseWord = copyArray[index];
+    }
+   
 
     goodAnswer = randomAnswer();
     if (goodAnswer == "A") {
@@ -182,13 +182,21 @@ function randomAnotherAnswer() {
 
 function check(letter) {
     if (letter == goodAnswer) {
+         if (score+wrongAnswer>=numberChooseWords){
+             arrayWrongAnswer.splice(0, 1);
+         }else{
+             copyArray.splice(index, 1);
+         }
         yes.play();
         score++;
-        copyArray.splice(index, 1);
+        
 
 
     } else {
         no.play();
+        if (score+wrongAnswer<numberChooseWords){
+             arrayWrongAnswer.push(copyArray[index]);
+        }
         life--;
         wrongAnswer++;
         if (life == 1) {
@@ -208,8 +216,8 @@ function check(letter) {
     if (life > 0) {
         $("#scoreData").html(score);
         $("#wrongData").html(wrongAnswer);
-        $("#remainedData").html(copyArray.length);
-        if (copyArray.length > 0) {
+        $("#remainedData").html(numberChooseWords-score);
+        if (score < numberChooseWords) {
             randomWord();
         } else {
             endWords();
@@ -221,7 +229,7 @@ function check(letter) {
 function endLifes() {
     loseWav.play();
 
-    $("section").html('<div id="endLifeEvent">Koniec żyć :( <br>Twój wynik to: <span id="endInfo"><img src="goodImg.png"> &nbsp; ' + score + ' &nbsp; <img src="wrongImg.png"> &nbsp; ' + wrongAnswer + ' &nbsp; </span>Pozostało: ' + copyArray.length + '<br><span id="tryAgain" onclick="play()">Spróbuj ponownie</span></div>');
+    $("section").html('<div id="endLifeEvent">Koniec żyć :( <br>Twój wynik to: <span id="endInfo"><img src="goodImg.png"> &nbsp; ' + score + ' &nbsp; <img src="wrongImg.png"> &nbsp; ' + wrongAnswer + ' &nbsp; </span>Pozostało: ' + (numberChooseWords-score) + '<br><span id="tryAgain" onclick="play()">Spróbuj ponownie</span></div>');
 
 }
 
