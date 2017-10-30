@@ -7,12 +7,12 @@
     <title>Fiszki</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    
 
-<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
     <script src="index.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
+
     <link href="https://fonts.googleapis.com/css?family=Varela+Round&amp;subset=latin-ext" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
 
@@ -26,29 +26,39 @@
 
 </head>
 
-<body onload="loadFirstImage()" >
-    <a href="index.html"><header>
-        <h1>Fiszki v.1.0</h1>
-        <p>i nauka staje się prostsza</p>
-        </header></a>
+<body onload="loadFirstImage()">
+    <a href="index.html">
+        <header>
+            <h1>Fiszki v.1.0</h1>
+            <p>i nauka staje się prostsza</p>
+        </header>
+    </a>
     <section id="section">
 
-        <div id="animation" >
-            
+        <div id="animation">
+
         </div>
 
 
         <div id="category">
-            <h3>Wybierz kategorię</h3>
+            Wylosuj
+            <div id="slidecontainer">
+                <input type="range" min="10" max="100" value="50" class="slider" id="myRange" oninput="changeSlider()"><span><span id="numbersOfWords">50</span> słówek z kategorii</span>
+            </div> 
             <div id="categoryButtons">
-                <div class="button" onclick="startFirst()" >IT</div>
+                <select id="selectCategory" name="categoryName">
+  <option value="IT">IT</option>
+  <option value="zycieCodzienne">Życie codzienne</option>
+ 
+</select>
+               <div id="startButton" onclick="startFirst()">Start</div>
                 <div>Wkrótce pojawią się nowe kategorie</div>
             </div>
         </div>
     </section>
     <footer>&copy;2017 Wszelkie prawa zastrzeżone
     </footer>
-    
+
 </body>
 
 </html>
