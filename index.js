@@ -37,6 +37,7 @@ function wordAndDefinition(word, definition) {
 
 function load(category) {
     showLoadingAnimation();
+    numberChooseWords = document.getElementById("myRange").value;
     var config = {
         apiKey: "AIzaSyCNjL-encte1mx1ZTsJrGlgGStt2pm6qz0",
         authDomain: "zostane-programistka.firebaseapp.com",
