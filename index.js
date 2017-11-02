@@ -65,6 +65,9 @@ async function startFirst() {
     } else if (document.getElementById("selectCategory").value == "zycieCodzienne") {
         category = "Życie codzienne/";
         categoryName = "Życie codzienne";
+    } else if (document.getElementById("selectCategory").value == "czlowiek") {
+        category = "Człowiek/";
+        categoryName = "Człowiek";
     }
     await load(category);
     play();
