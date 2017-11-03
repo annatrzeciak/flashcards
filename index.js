@@ -68,6 +68,12 @@ async function startFirst() {
     } else if (document.getElementById("selectCategory").value == "czlowiek") {
         category = "Człowiek/";
         categoryName = "Człowiek";
+    } else if (document.getElementById("selectCategory").value == "emocjeIUczucia") {
+        category = "Emocje i uczucia/";
+        categoryName = "Emocje i uczucia";
+    } else if (document.getElementById("selectCategory").value == "zdrowie") {
+        category = "Zdrowie/";
+        categoryName = "Zdrowie";
     }
     await load(category);
     play();
@@ -241,4 +247,8 @@ function endWords() {
     winWav.play();
 
     $("section").html('<div id="endLifeEvent">Brawo. Udzieliłeś/aś odpowiedzi na wszystkie zadania:) <br>Twój wynik to: <span id="endInfo"><img src="goodImg.png"> &nbsp; ' + score + ' &nbsp; <img src="wrongImg.png"> &nbsp; ' + wrongAnswer + ' &nbsp; </span><span id="tryAgain" onclick="play()">Spróbuj ponownie</span></div>');
+}
+function showContactForm(){
+    $("#contactForm").toggleClass("showContactForm");
+    $("#logoMessage").toggleClass("arrowImage");
 }

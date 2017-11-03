@@ -13,6 +13,21 @@
     <script src="index.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+    <script>
+        $(document).ready(function() {
+            $("html").on("submit", "#contact_form", function(e) {
+                e.preventDefault();
+                $("#send_form_status").html('').hide();
+                var data = $("#contact_form").serialize();
+                $.post("/send_form.php", data, function(res) {
+                    $("#send_form_status").html(res.msg).show();
+                    if (res.status == 1) {
+                        $("#contact_form")[0].reset();
+                    }
+                });
+            });
+        });
+    </script>
     <link href="https://fonts.googleapis.com/css?family=Varela+Round&amp;subset=latin-ext" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
 
@@ -44,18 +59,36 @@
             Wylosuj
             <div id="slidecontainer">
                 <input type="range" min="10" max="100" value="50" class="slider" id="myRange" oninput="changeSlider()"><span><span id="numbersOfWords">50</span> słówek z kategorii</span>
-            </div> 
+            </div>
             <div id="categoryButtons">
                 <select id="selectCategory" name="categoryName">
-  <option value="IT">IT</option>
-  <option value="zycieCodzienne">Życie codzienne</option>
+ 
+
   <option value="czlowiek">Człowiek</option>
+  <option value="emocjeIUczucia">Emocje i uczucia</option>
+   <option value="IT">IT</option>
+  <option value="zdrowie">Zdrowie</option>
+    <option value="zycieCodzienne">Życie codzienne</option>
  
 </select>
-               <div id="startButton" onclick="startFirst()">Start</div>
+                <div id="startButton" onclick="startFirst()">Start</div>
                 <div>Wkrótce pojawią się nowe kategorie</div>
             </div>
         </div>
+        <div id="contactForm">
+           <div id="logoMessage" onclick="showContactForm()"></div>
+           <div><h2>Formularz kontaktowy</h2>
+            <div id="send_form_status"></div>
+            <form method="post" action="/send_form.php" id="contact_form">
+                <div><label for="name">Imię </label></div>
+                <div><input type="text" name="name" id="name" class="formField" /></div>
+                <div><label for="email">Adres email</label></div>
+                <div><input type="text" name="email" id="email" class="formField" /></div>
+                <div><label for="message">Treść wiadomości</label></div>
+                <div><textarea name="message" id="message" class="formField"></textarea></div>
+                <div><button id="sendBtn">Wyślij</button></div>
+            </form>
+            </div></div>
     </section>
     <footer>&copy;2017 Wszelkie prawa zastrzeżone
     </footer>
