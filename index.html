@@ -44,40 +44,16 @@
 <body onload="loadFirstImage()">
     <a href="index.html">
         <header>
-            <h1>Fiszki v.1.1</h1>
+
+            <h1>Fiszki v.1.2</h1>
             <p>i nauka staje się prostsza</p>
+
         </header>
     </a>
-    <section id="section">
-
-        <div id="animation">
-
-        </div>
-
-
-        <div id="category">
-            Wylosuj
-            <div id="slidecontainer">
-                <input type="range" min="10" max="100" value="50" class="slider" id="myRange" oninput="changeSlider()"><span><span id="numbersOfWords">50</span> słówek z kategorii</span>
-            </div>
-            <div id="categoryButtons">
-                <select id="selectCategory" name="categoryName">
- 
-
-  <option value="czlowiek">Człowiek</option>
-  <option value="emocjeIUczucia">Emocje i uczucia</option>
-   <option value="IT">IT</option>
-  <option value="zdrowie">Zdrowie</option>
-    <option value="zycieCodzienne">Życie codzienne</option>
- 
-</select>
-                <div id="startButton" onclick="startFirst()">Start</div>
-                <div>Wkrótce pojawią się nowe kategorie</div>
-            </div>
-        </div>
-        <div id="contactForm">
-           <div id="logoMessage" onclick="showContactForm()"></div>
-           <div><h2>Formularz kontaktowy</h2>
+    <div id="contactForm">
+        <div id="logoMessage" onclick="showContactForm()"></div>
+        <div>
+            <h2>Formularz kontaktowy</h2>
             <div id="send_form_status"></div>
             <form method="post" action="/send_form.php" id="contact_form">
                 <div><label for="name">Imię </label></div>
@@ -88,7 +64,38 @@
                 <div><textarea name="message" id="message" class="formField"></textarea></div>
                 <div><button id="sendBtn">Wyślij</button></div>
             </form>
-            </div></div>
+        </div>
+    </div>
+    <section id="section">
+
+        <div id="animation">
+
+        </div>
+
+
+        <div id="category">
+            Wylosuj
+            <div id="slidecontainer">
+                <input type="range" min="10" max="100" value="50" class="slider" id="myRange" oninput="changeSlider()"><span><span id="numbersOfWords">50</span> słówek</span>
+            </div>
+            <div id="categoryButtons"><span id="chooseCategoryAndStart">z kategorii 
+            
+               <div> <select id="selectCategory" name="categoryName">
+ 
+
+  <option value="czlowiek">Człowiek</option>
+  <option value="emocjeIUczucia">Emocje i uczucia</option>
+   <option value="IT">IT</option>
+   <option value="kultura">Kultura</option>
+  <option value="zdrowie">Zdrowie</option>
+    <option value="zycieCodzienne">Życie codzienne</option>
+ 
+</select>
+                   <button id="startButton" onclick="startFirst()">Start</button></div>
+                <div style="font-size:2vh; padding-top:2vh;">Wkrótce pojawią się nowe kategorie</div>
+            </span></div>
+        </div>
+
     </section>
     <footer>&copy;2017 Wszelkie prawa zastrzeżone
     </footer>

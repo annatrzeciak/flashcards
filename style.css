@@ -1,3 +1,8 @@
+:root {
+    --lightGrey: #a0a0a0;
+    --darkGrey: #343442;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,18 +10,20 @@
 
 body {
     display: flex;
+    position: fixed;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-family: 'Varela Round', sans-serif;
     width: 80vw;
     height: 100vh;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 10vw;
+    margin-right: 10vw;
     overflow: hidden;
 }
 
 header {
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,11 +31,12 @@ header {
     width: 80vw;
     margin: 2vh auto;
     height: 20vh;
-    background-color: #4eb69f;
-    color: #14362e;
+    background-color: var(--lightGrey);
+    color: var(--darkGrey);
     font-size: 3.5vh;
     font-weight: bold;
     font-family: 'Gloria Hallelujah', cursive;
+      box-shadow: 6px 6px 6px rgb(109, 107, 107);
 }
 
 a {
@@ -42,21 +50,24 @@ header h1 {
     justify-content: center;
     margin: 0 auto;
     padding: 0;
+   text-shadow: 4px 4px 2px rgb(109, 107, 107);
 }
 
 header p {
     margin: 0;
     padding: 0;
     font-size: 2.5vh;
+       text-shadow: 4px 4px 2px rgb(109, 107, 107);
 }
 
 section {
+     box-shadow: 6px 6px 6px rgb(109, 107, 107);
     width: 100%;
     height: 70vh;
     margin-bottom: 2vh;
     margin-top: 2vh;
-    background-color: #4eb69f;
-    color: #14362e;
+    background-color: var(--lightGrey);;
+    color: var(--darkGrey);;
     font-size: 3vh;
     display: flex;
     justify-content: center;
@@ -71,7 +82,7 @@ section {
 
 #info div {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     width: 160px;
     padding: 1.5vh;
@@ -91,6 +102,7 @@ label,
     font-family: 'Varela Round', sans-serif;
     width: 700px;
     min-height: 8vh;
+    text-align: center;
 }
 
 .button {
@@ -99,15 +111,16 @@ label,
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 3px solid #14362e;
+    border: 3px solid var(--darkGrey);
     border-radius: 6px;
-    margin: 1.5vh;
+    margin: 1vh;
     box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
     transition: 0.2s;
 }
 
 .button:hover {
-    background: #4eb69f; `
+    background: var(--lightGrey);
+       
 }
 
 .button:active {
@@ -128,15 +141,17 @@ label,
 }
 
 footer {
+  
     display: flex;
     width: 100%;
     margin-top: 2vh;
     height: 4vh;
-    background-color: #4eb69f;
-    color: #14362e;
+    background-color: var(--lightGrey);
+    color: var(--darkGrey);
     font-size: 3vh;
     align-content: center;
     justify-content: center;
+    box-shadow: 6px 6px 6px rgb(109, 107, 107);
 }
 
 #people {
@@ -157,11 +172,25 @@ footer {
 #categoryButtons {
     display: flex;
     align-items: center;
+    flex-direction: row;
 }
 
 #categoryButtons .button {
     width: 150px;
     display: block;
+}
+
+#chooseCategoryAndStart {
+    width: 100%;
+    height: 7vh;
+    line-height: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#chooseCategoryAndStart div {
+    display: flex;
 }
 
 #slidecontainer {
@@ -182,7 +211,7 @@ footer {
     width: 60%;
     height: 15px;
     border-radius: 5px;
-    background: #d3d3d3;
+    background: #313131;
     outline: none;
     opacity: 0.7;
     -webkit-transition: .2s;
@@ -224,22 +253,28 @@ input {
 }
 
 #selectCategory {
+    width: 15vw;
     height: 7vh;
-    width: 20%;
-    border: 3px solid #14362e;
+    border: 3px solid var(--darkGrey);
     border-radius: 6px;
     font-family: 'Varela Round', sans-serif;
     font-size: 3vh;
     margin-right: 10px;
+    margin-left: 10px;
+}
+
+#selectCategory option {
+    font-size: 2vw;
+    min-height: 1vw;
 }
 
 #startButton {
     text-align: center;
-    line-height: 6vh;
-    height: 6vh;
-    width: 100px;
+    line-height: 7vh;
+    width: 15vw;
+    height: 7vh;
     background: white;
-    border: 3px solid #14362e;
+    border: 3px solid var(--darkGrey);
     border-radius: 6px;
     font-family: 'Varela Round', sans-serif;
     font-size: 3vh;
@@ -247,15 +282,24 @@ input {
     cursor: pointer;
     box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
     transition: 0.2s;
+    box-sizing: border-box;
 }
 
 #startButton:hover {
-    background: #4eb69f;
+    background: var(--lightGrey);
 }
 
 #startButton:active {
     transform: translateY(4px);
     box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.75);
+}
+
+#info {
+    width: 100%;
+}
+
+#info div {
+    width: 50%;
 }
 
 #endLifeEvent {
@@ -290,6 +334,11 @@ img {
     width: 7vh;
     height: 7vh;
     display: block;
+    transition: .5s;
+}
+.showImg{
+ 
+    transform: scale(4) ;
 }
 
 #scoreData,
@@ -314,8 +363,8 @@ h3 {
     position: absolute;
     background: rgba(33, 33, 33, 0.6);
     box-sizing: border-box;
-    height: 67.5%;
-    width: 80%;
+    height: 120%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -373,31 +422,41 @@ h3 {
     background: lightgrey;
     position: absolute;
     padding: 20px;
-    top:30px;
-    right:-440px;
-    transition: 1s;
-}
-.showContactForm{
-    transform: translateX(-440px);
-    
+    top: 2vh;
+    left: 90vw;
+    transition: transform 1s;
+   
+      filter: drop-shadow( 6px 6px 6px rgb(109, 107, 107));
+     
 }
 
-#logoMessage{
+.showContactForm {
+    transform: translateX(-440px);
+}
+#contactForm dvi:nth-child(2){
+  
+}
+#logoMessage {
+    
+    z-index: 0;
     cursor: pointer;
-    width:50px;
+    width: 50px;
     height: 50px;
     background: lightgrey url(email.png) no-repeat center;
     background-size: 40px;
-   position: absolute;
-    top:0px;
+    position: absolute;
+    top: 0px;
     left: -50px;
-     transition: 0.7s;
+    transition: 0.7s;
+  
    
 }
-.arrowImage{
-     background: lightgrey url(right-arrow.png)  no-repeat center !important;
-     background-size: 30px !important;
+
+.arrowImage {
+    background: lightgrey url(right-arrow.png) no-repeat center !important;
+    background-size: 30px !important;
 }
+
 .formField {
     font: inherit;
     border: 1px solid #ccc;
@@ -438,7 +497,6 @@ textarea.formField {
     color: #F00
 }
 
-;
 @keyframes line1 {
     from {}
     to {
@@ -464,5 +522,163 @@ textarea.formField {
     from {}
     to {
         transform: rotate(90deg) translate(-583px, 32px);
+    }
+}
+
+@media(max-width:1000px) {
+    body {
+        width: 90vw;
+        margin-left: 5vw;
+    }
+    header {
+        width: 90vw;
+    }
+    #contactForm {
+        top: 2vh;
+        left: 95vw;
+    }
+    label,
+    .button {
+        width: 80vw;
+    }
+    #endLifeEvent {
+        width: 60vw;
+    }
+}
+
+@media (max-width:800px) {
+    body {
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+    }
+    header {
+        width: 100vw;
+        height: 15vh;
+    }
+    header h1 {
+        font-size: 4vh;
+    }
+    #info {
+        font-size: 4vh;
+    }
+    #contactForm {
+        width: 80vw;
+        padding: 3vw;
+        top: 2vh;
+        left: 100vw;
+    }
+    .showContactForm {
+        transform: translateX(-86vw);
+    }
+    #people {
+        background-size: auto 23vh !important;
+        height: 25vh !important;
+    }
+    #category {
+        display: flex;
+        flex-direction: column;
+    }
+    #chooseCategoryAndStart {
+        flex-direction: column;
+        height: auto;
+    }
+    #selectCategory {
+        width: 30vw;
+        height: 7vh;
+    }
+    #startButton {
+        width: 30vw !important;
+        height: 7vh !important;
+    }
+    section {
+        padding: 0 2vh;
+    }
+    #info {
+        flex-direction: column;
+        justify-content: center;
+        font-size: 3vh;
+    }
+    #info div {
+        width: 100%;
+        padding: 0 1vw 0 1vw;
+    }
+    #selectCategory option {
+        font-size: 3vw;
+    }
+}
+
+@media(max-width:500px) {
+    #selectCategory,
+    #startButton {
+        width: 150px;
+    }
+    header {
+        height: 13vh;
+    }
+    #endLifeEvent {
+        font-size: 5vw;
+    }
+}
+
+@media(max-width:400px) {
+    #info,
+    #category,
+    footer {
+        font-size: 2.3vh;
+    }
+    #score img {
+        height: 5vh;
+        width: 5vh;
+    }
+}
+
+@media(min-height:1200px) {
+    #people {
+        background-size: auto 25vh !important;
+        height: 30vh !important;
+    }
+    #category {
+        display: flex;
+        flex-direction: column;
+    }
+    #chooseCategoryAndStart {
+        flex-direction: column;
+        height: auto;
+    }
+    #selectCategory {
+        width: 30vw;
+        height: 7vh;
+    }
+    #startButton {
+        width: 30vw !important;
+        height: 7vh !important;
+    }
+    #logoMessage {
+        height: 100px;
+        width: 100px;
+        transform: translate(-50px);
+    }
+    header {
+        height: 15vh;
+    }
+    header h1 {
+        font-size: 4vh;
+    }
+    #info {
+        flex-direction: column;
+        justify-content: center;
+        font-size: 3vh;
+    }
+    #info div {
+        width: 100%;
+        padding: 0 1vw 0 1vw;
+    }
+    #endLifeEvent {
+        width: 60vw;
+    }
+    #selectCategory option {
+        font-size: 1vh !important;
+        min-height: 1vh !important;
     }
 }
