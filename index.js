@@ -77,6 +77,12 @@ async function startFirst() {
     } else if (document.getElementById("selectCategory").value == "kultura") {
         category = "Kultura/";
         categoryName = "Kultura";
+    } else if (document.getElementById("selectCategory").value == "nauka") {
+        category = "Nauka/";
+        categoryName = "Nauka";
+    } else if (document.getElementById("selectCategory").value == "cywilizacja") {
+        category = "Cywilizacja/";
+        categoryName = "Cywilizacja";
     }
 
     await load(category);
@@ -92,7 +98,7 @@ function play() {
     score = 0;
     wrongAnswer = 0;
     life = 3;
-    
+
 
     $("section").html('<div id="info"><div><div style="text-align:center"><strong>Kategoria:<br>' + categoryName + '</strong></div><div id="life">Życia: <span id="lifeData"> &#10084; &#10084; &#10084;</span></div></div><div><div id="score"><img class="goodAnswerImg" src="goodImg.png"><span id="scoreData"></span><img class="wrongAnswerImg" src="wrongImg.png"><span id="wrongData"></span></div><div id="remainedWords">Pozostało: <span id="remainedData"></span></div></div></div><div id="board"><label id="word"></label><div class="button" id="answerA" onclick="check(&#34;A&#34;)"></div><div class="button" id="answerB" onclick="check(&#34;B&#34;)"></div><div class="button" id="answerC" onclick="check(&#34;C&#34;)"></div><div class="button" id="answerD" onclick="check(&#34;D&#34;)"></div></div>');
     $("#scoreData").html(score);
@@ -115,55 +121,34 @@ function randomWord() {
     goodAnswer = randomAnswer();
     if (goodAnswer == "A") {
         answerA = chooseWord.definition;
-        for (; answerB == "" || answerB == answerA;) {
-            answerB = randomAnotherAnswer();
-        }
-        for (; answerC == "" || answerC == answerA || answerC == answerB;) {
-            answerC = randomAnotherAnswer();
-        }
-        for (; answerD == "" || answerD == answerA || answerD == answerB || answerD == answerC;) {
-            answerD = randomAnotherAnswer();
-        }
-
-
-    } else if (goodAnswer == "B") {
-        answerB = chooseWord.definition;
-        for (; answerA == "" || answerA == answerB;) {
-            answerA = randomAnotherAnswer();
-        }
-        for (; answerC == "" || answerC == answerA || answerC == answerB;) {
-            answerC = randomAnotherAnswer();
-        }
-        for (; answerD == "" || answerD == answerA || answerD == answerB || answerD == answerC;) {
-            answerD = randomAnotherAnswer();
-        }
-
-    } else if (goodAnswer == "C") {
-        answerC = chooseWord.definition;
-        for (; answerA == "" || answerA == answerC;) {
-            answerA = randomAnotherAnswer();
-        }
-        for (; answerB == "" || answerB == answerA || answerB == answerC;) {
-            answerB = randomAnotherAnswer();
-        }
-        for (; answerD == "" || answerD == answerA || answerD == answerB || answerD == answerC;) {
-            answerD = randomAnotherAnswer();
-        }
-
-    } else if (goodAnswer == "D") {
-        answerD = chooseWord.definition;
-        for (; answerA == "" || answerA == answerD;) {
-            answerA = randomAnotherAnswer();
-        }
-        for (; answerB == "" || answerB == answerA || answerB == answerD;) {
-            answerB = randomAnotherAnswer();
-        }
-        for (; answerC == "" || answerC == answerA || answerC == answerB || answerC == answerD;) {
-            answerC = randomAnotherAnswer();
-        }
-
-
+    } else {
+        answerA = randomAnotherAnswer();
     }
+    if (goodAnswer == "B") {
+        answerB = chooseWord.definition;
+    } else {
+        do {
+            answerB = randomAnotherAnswer();
+        }
+        while (answerA == answerB);
+    }
+    if (goodAnswer == "C") {
+        answerC = chooseWord.definition;
+    } else {
+        do {
+            answerC = randomAnotherAnswer();
+        }
+        while (answerC == answerA || answerC == answerB);
+    }
+    if (goodAnswer == "D") {
+        answerD = chooseWord.definition;
+    } else {
+        do {
+            answerD = randomAnotherAnswer();
+        }
+        while (answerD == answerA || answerD == answerB || answerD == answerC);
+    }
+
     $("#word").html(chooseWord.word);
     $("#answerA").html(answerA);
     $("#answerB").html(answerB);
@@ -265,11 +250,11 @@ function showContactForm() {
 }
 
 function showImgAnswer(e) {
-    
+
     if (e == "good") {
         document.querySelector(".goodAnswerImg").classList.add("showImg");
     } else if (e == "wrong") {
-document.querySelector(".wrongAnswerImg").classList.add("showImg");
+        document.querySelector(".wrongAnswerImg").classList.add("showImg");
     }
     const imgs = document.querySelectorAll('img');
     imgs.forEach(img => img.addEventListener('transitionend', removeTransition));
